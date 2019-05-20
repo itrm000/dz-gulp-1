@@ -7,8 +7,8 @@ gulp.task('server', ['styles'], function() {
     	server: { baseDir: './app/'}
     });
     gulp.watch('./app/**/*.html').on('change', browserSync.reload);
-    // gulp.watch('./app/less/**/*.less', ['less']);
-    gulp.watch('./app/sass/**/*.scss', ['sass']);
+    gulp.watch('./app/less/**/*.less', ['styles']);
+    // gulp.watch('./app/sass/**/*.sass', ['styles']);
 });
 
 gulp.task('styles', function() {
@@ -18,11 +18,11 @@ gulp.task('styles', function() {
     .pipe(browserSync.stream());
 });
 
-gulp.task('sass', function() {
-    return gulp.src('./app/sass/**/*.scss')
-    .pipe(sass())
-    .pipe(gulp.dest('./app/css'))
-    .pipe(browserSync.stream());
-});
+// gulp.task('sass', function() {
+//     return gulp.src('./app/sass/**/*.scss')
+//     .pipe(sass())
+//     .pipe(gulp.dest('./app/css'))
+//     .pipe(browserSync.stream());
+// });
 
 gulp.task('default', ['server']);
